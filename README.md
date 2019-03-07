@@ -8,5 +8,5 @@ En esta imagen vemos como podemos editar los cuadros en la primera exposición.
 
 
 En esta podemos ver como no necesitamos especificar la exposición en la que queremos editar los cuadros, seleccionandola se guardará en esa misma automáticamente.
-<img src="img/cap1.png">
+<img src="img/cap2.png">
 
