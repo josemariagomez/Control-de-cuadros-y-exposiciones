@@ -20,7 +20,7 @@
           Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/museo", "root", "");
           Statement s = conexion.createStatement(); 
           
-          String borrado = "DELETE FROM cuadro WHERE id=";
+          String borrado = "DELETE FROM user WHERE id=";
           borrado += request.getParameter("id");
           
           s.execute(borrado);
@@ -29,7 +29,7 @@
         
         <script>
             //Redirecciona a la página principal
-            location.replace("logged.jsp#expo");
+            location.replace("logged.jsp#admin");
         </script>
     </body>
 </html>

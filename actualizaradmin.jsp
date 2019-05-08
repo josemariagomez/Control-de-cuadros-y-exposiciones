@@ -4,6 +4,7 @@
     Author     : jose_
 --%>
 
+<%@page import="org.apache.commons.codec.digest.DigestUtils"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -22,14 +23,10 @@
           Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/museo", "root", "");
           Statement s = conexion.createStatement();
 
-          String actualizacion = "UPDATE cuadro SET titulo='";
-          actualizacion += request.getParameter("titulo");
-          actualizacion += "', autor='";
-          actualizacion += request.getParameter("autor");
-          actualizacion += "', fecha='";
-          actualizacion += request.getParameter("fecha");
-          actualizacion += "', tecnica='";
-          actualizacion += request.getParameter("tecnica");
+          String actualizacion = "UPDATE user SET username='";
+          actualizacion += request.getParameter("username");
+          actualizacion += "', password='";
+          actualizacion += DigestUtils.md5Hex(request.getParameter("password"));
           actualizacion += "' WHERE id =";
           actualizacion += request.getParameter("id");
           
@@ -40,7 +37,7 @@
         
         <script>
             //Redirecciona a la página principal
-            location.replace("logged.jsp#expo");
+            location.replace("logged.jsp#admin");
         </script>
     </body>
 </html>

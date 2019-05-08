@@ -14,7 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="style.css">
         <title>Museo del Prado</title>
     </head>
     <body>
@@ -39,6 +39,9 @@
                         <a class="nav-link" href="#expo">Exposiciones</a>
                     </li>
                 </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-success my-2 my-sm-0" type="submit"><a style="text-decoration: none; color: white;" href="login/login.jsp">Iniciar Sesión</a></button>
+                </form>   
             </div>
         </nav>
 
@@ -85,88 +88,6 @@
                                 <div class="card-body">
                                     <table class="table">
                                         <tr><th></th><th>Título</th><th>Autor</th><th>Fecha/Época</th><th>Técnica</th><th></th><th></th></tr>
-                                        <form action="<%= estado.equals("listado") ? "nuevaexpo.jsp" : "actualizarexpo.jsp"%>"method="GET">
-                                            <tr>
-                                                <td>
-                                                    <%
-                                                      if (estado.equals("edicion")) {
-                                                    %>
-                                                    <div class="form-group">
-                                                        <input
-                                                            size="3"
-                                                            value="<%= estado.equals("edicion") ? request.getParameter("id") : ""%>"
-                                                            hidden
-                                                            class="form-control">
-
-                                                    </div>
-                                                    <input
-                                                        value="<%= estado.equals("edicion") ? request.getParameter("id") : ""%>"
-                                                        name="id" 
-                                                        type="hidden">
-
-                                                    <%
-                                                      }
-                                                    %>
-                                                </td>
-                                                <td>
-                                                    <input
-                                                        size="3"
-                                                        name="expo"
-                                                        value="<%= Integer.parseInt(exposiciones.getString("id"))%>"
-                                                        hidden
-                                                        class="form-control">
-                                                    <div class="form-group">
-                                                        <input
-                                                            value="<%= estado.equals("edicion") ? request.getParameter("titulo") : ""%>"
-                                                            name="titulo" 
-                                                            type="text" 
-                                                            class="form-control"
-                                                            required>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input
-                                                            value="<%= estado.equals("edicion") ? request.getParameter("autor") : ""%>"
-                                                            name="autor" 
-                                                            type="text" 
-                                                            class="form-control"
-                                                            required>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input
-                                                            value="<%= estado.equals("edicion") ? request.getParameter("fecha") : ""%>"
-                                                            name="fecha" 
-                                                            type="text" 
-                                                            class="form-control"
-                                                            required>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input
-                                                            value="<%= estado.equals("edicion") ? request.getParameter("tecnica") : ""%>"
-                                                            name="tecnica" 
-                                                            type="text" 
-                                                            class="form-control"
-                                                            required>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <% if (estado.equals("listado")) {
-                                                    %>
-                                                    <button type="submit" class="btn btn-primary">Añadir</button>
-                                                    <%
-                                                      }
-                                                      if (estado.equals("edicion")) {
-                                                    %>
-                                                    <a href="actualizarserie.jsp?id=<%= request.getParameter("id")%>&titulo=<%= request.getParameter("titulo")%>&autor=<%= request.getParameter("autor")%>&fecha=<%= request.getParameter("fecha")%>&tecnica=<%= request.getParameter("tecnica")%>"><button type="submit" class="btn btn-success">Guardar</button></a></td>
-                                                <td><a href="index.jsp#expo"><button type="button" class="btn btn-dark">Cancelar</button></a>
-                                                    <%}%></td>
-                                            </tr>
-                                        </form>
                                         <%}%>
                                         <%
                                           ResultSet listado = s.executeQuery("SELECT * FROM cuadro");
@@ -179,8 +100,6 @@
                                             <td><%= listado.getString("autor")%></td>
                                             <td><%= listado.getString("fecha")%></td>
                                             <td><%= listado.getString("tecnica")%></td>
-                                            <td><a class="btn btn-warning" href="index.jsp?id=<%= listado.getString("id")%>&expo=<%= listado.getString("expo")%>&titulo=<%= listado.getString("titulo")%>&autor=<%= listado.getString("autor")%>&fecha=<%= listado.getString("fecha")%>&tecnica=<%= listado.getString("tecnica")%>#expo" role="button">Modificar</a></td>
-                                            <td><a class="btn btn-danger" href="borrarexpo.jsp?id=<%= listado.getString("id")%>" role="button">Eliminar</a></td>
                                         </tr>
                                         <%}
                                           }%>

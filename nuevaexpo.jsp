@@ -37,7 +37,7 @@
         %>
         <script>
             //Redirecciona a la página principal
-            location.replace("index.jsp#expo");
+            location.replace("logged.jsp#expo");
         </script>
     </body>
 </html>

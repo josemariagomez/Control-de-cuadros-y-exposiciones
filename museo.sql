@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-03-2019 a las 19:34:53
+-- Tiempo de generación: 08-05-2019 a las 22:40:00
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `cuadro` (
 --
 
 INSERT INTO `cuadro` (`id`, `expo`, `titulo`, `autor`, `fecha`, `tecnica`) VALUES
-(1, 1, 'Venus recreándose con el Amor y la Música', 'Tiziano', 'Hacia el 1554', 'Óleo'),
+(1, 1, 'Venus recreándose con el Amor y la Música', 'Tiziano', 'Hacia el 1554', 'Pintura'),
 (2, 2, 'Saturno con el signo de Capricornio', 'Pietro Facchetti', 'Siglo XVI', 'Óleo'),
 (3, 1, 'La muerte de Lucrecia', 'Luca Cambiaso', 'Último tercio del siglo XVI', 'Óleo'),
 (4, 2, 'Diana Cazadora', 'Pedro Pablo Rubens', '1617 - 1620', 'Óleo'),
@@ -69,6 +69,26 @@ INSERT INTO `exposicion` (`id`, `titulo`) VALUES
 (2, 'Arte y mito. Los dioses del Prado'),
 (3, 'De gira por España');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+  `password` varchar(255) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`) VALUES
+(3, 'SuperAdmin', '81dc9bdb52d04dc20036dbd8313ed055'),
+(4, 'admin', '21232f297a57a5a743894a0e4a801fc3');
+
 --
 -- Índices para tablas volcadas
 --
@@ -87,6 +107,13 @@ ALTER TABLE `exposicion`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user` (`username`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -94,13 +121,19 @@ ALTER TABLE `exposicion`
 -- AUTO_INCREMENT de la tabla `cuadro`
 --
 ALTER TABLE `cuadro`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `exposicion`
 --
 ALTER TABLE `exposicion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
