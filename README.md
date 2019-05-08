@@ -24,5 +24,5 @@ En esta podemos ver como no necesitamos especificar la exposición en la que que
 
 En esta imagen vemos como podemos editar los administradores de la página.</br>
 
-<img src="img/cap1.png">
+<img src="img/cap3.png">
 
